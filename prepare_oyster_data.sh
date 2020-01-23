@@ -1,0 +1,1 @@
+python keras_retinanet/prepocessing/makesense.py -i "/home/bsadrfa/behzad/projects/data_oyster/"
