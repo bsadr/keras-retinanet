@@ -4,9 +4,9 @@ python keras_retinanet/bin/train.py \
   --multi-gpu 2 \
   --batch-size 2 \
   --freeze-backbone \
-  csv "/home/bsadrfa/behzad/projects/data_oyster/train_annotations.txt" \
+  csv "/home/bsadrfa/behzad/projects/data_oyster/train_annotations.csv" \
   "/home/bsadrfa/behzad/projects/data_oyster/classes.csv" \
-  --val-annotations "/home/bsadrfa/behzad/projects/data_oyster/test_annotations.txt" \
+  --val-annotations "/home/bsadrfa/behzad/projects/data_oyster/val_annotations.csv" \
 # --backbone resnet50
 # --epochs 50
 # --lr 1e-5

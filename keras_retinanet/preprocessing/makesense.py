@@ -16,7 +16,11 @@ def get_data(input_path):
             print('Parsing annotation files (made by makesense.ai) from {}'.format(annot))
             for line in f:
                 line_split = line.strip().split(',')
-                (class_name, x1, y1, x2, y2, filename, img_width, img_height) = line_split
+                (class_name, xa, ya, xb, yb, filename, img_width, img_height) = line_split
+                x1 = np.min(xa, xb)
+                x2 = np.max(xa, xb)
+                y1 = np.min(ya, yb)
+                y2 = np.max(ya, yb)
                 filepath = os.path.join(imgs_path, filename)
                 if class_name not in classes:
                     classes.append(class_name)
@@ -28,13 +32,13 @@ def get_data(input_path):
                 else:
                     test_lines.append(line_out)
     class_lines = []
-    for c, i in enumerate(classes):
+    for i, c in enumerate(classes):
         class_lines.append('{},{}\n'.format(c, i))
-    with open(os.path.join(input_path, 'classes.txt'), "w") as f:
+    with open(os.path.join(input_path, 'classes.csv'), "w") as f:
         f.writelines(class_lines)
-    with open(os.path.join(input_path, 'train_annotations.txt'), "w") as f:
+    with open(os.path.join(input_path, 'train_annotations.csv'), "w") as f:
         f.writelines(train_lines)
-    with open(os.path.join(input_path, 'test_annotations.txt'), "w") as f:
+    with open(os.path.join(input_path, 'val_annotations.csv'), "w") as f:
         f.writelines(test_lines)
     return
 
