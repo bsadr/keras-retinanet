@@ -25,3 +25,7 @@ coverage.xml
 # local
 /snapshots/
 /venv/
+
+# compile
+*.so
+*.c
